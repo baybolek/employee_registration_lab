@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Data
@@ -15,6 +19,17 @@ import java.time.LocalDate;
 @ToString
 public class Employee {
 
+//    @NotNull  //everything besides NULL will be accepted. ex: ""
+//    @NotEmpty  //does not accept null+"" but it will accept " "
+//    @NotBlank  // does not accept null+""+" "
+
+//    notes from instructor
+//    @NotNull  === > Except null, anything can be accepted
+//    @NotEmpty === > Except null and empty String, anything can be accepted
+//    @NotBlank === > Except null, empty String and only space, anything will be accepted
+
+    @NotBlank
+    @Size(max=12, min=2)
     private String firstName;
     private String lastName;
 
